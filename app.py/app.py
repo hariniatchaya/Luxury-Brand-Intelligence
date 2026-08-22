@@ -42,7 +42,6 @@ if page == "🏠 Overview":
         "Sustainability Score"
     ].mean()
 
-
     col1, col2, col3, col4 = st.columns(4)
     col1.metric(
         "💎 Total Brands",
@@ -63,7 +62,6 @@ if page == "🏠 Overview":
 
     col1, col2 = st.columns(2)
     with col1:
-
         tier_counts = (
             df["Luxury Tier"]
             .value_counts()
@@ -78,9 +76,9 @@ if page == "🏠 Overview":
             title="Luxury Tier Distribution")
         st.plotly_chart(fig,use_container_width=True)
     with col2:
-        top_brands = (df[["Brands","Luxury Brand Index"]].sort_values("Luxury Brand Index",ascending=False).head(10))
+        top_brands = (df[["Brands","Brands"]].sort_values("Brands",ascending=False).head(10))
         fig = px.bar(top_brands.sort_values("Luxury Brand Index"),
-            x="Luxury Brand Index",
+            x="Brands",
             y="Brands",
             orientation="h",
             title="Top 10 Luxury Brands")
@@ -97,14 +95,13 @@ elif page == "🏆 Brand Ranking":
                 "Luxury Tier",
                 "Average_Price",
                 "Global Reach Score",
-                "Sustainability Score",
-                "Luxury Brand Index"]].sort_values("Luxury Brand Index",ascending=False))
+                "Sustainability Score"]].sort_values("Brands",ascending=False))
 
     st.dataframe(ranking,use_container_width=True,hide_index=True)
     st.subheader("Top Luxury Brands")
     top10 = ranking.head(10)
-    fig = px.bar(top10.sort_values("Luxury Brand Index"),
-        x="Luxury Brand Index",
+    fig = px.bar(top10.sort_values("Brands"),
+        x="Brands",
         y="Brands",
         orientation="h",
         title="Top 10 Luxury Brands")
@@ -129,28 +126,25 @@ elif page == "⚖️ Brand Comparison":
             "Products",
             "Countries",
             "Sustainability",
-            "Heritage Age",
-            "Luxury Brand Index"
+            "Heritage Age"
         ],
         brand1: [
             b1["Average_Price"],
             b1["Price_Ceiling"],
             b1["Number of Stores"],
             b1["Products Offered"],
-            b1["Available Countries"],
+            b1["Countries Available"],
             b1["Sustainability Score"],
-            b1["Founded Age"],
-            b1["Luxury Brand Index"]
+            b1["Founded Age"]
         ],
         brand2: [
             b2["Average_Price"],
             b2["Price_Ceiling"],
             b2["Number of Stores"],
             b2["Products Offered"],
-            b2["Available Countries"],
+            b2["Countries Available"],
             b2["Sustainability Score"],
-            b2["Founded Age"],
-            b2["Luxury Brand Index"]
+            b2["Founded Age"]
         ]
     }
 )
