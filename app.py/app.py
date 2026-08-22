@@ -42,6 +42,7 @@ if page == "🏠 Overview":
         "Sustainability Score"
     ].mean()
 
+
     col1, col2, col3, col4 = st.columns(4)
     col1.metric(
         "💎 Total Brands",
@@ -62,6 +63,7 @@ if page == "🏠 Overview":
 
     col1, col2 = st.columns(2)
     with col1:
+
         tier_counts = (
             df["Luxury Tier"]
             .value_counts()
@@ -76,9 +78,9 @@ if page == "🏠 Overview":
             title="Luxury Tier Distribution")
         st.plotly_chart(fig,use_container_width=True)
     with col2:
-        top_brands = (df[["Brands","Brands"]].sort_values("Brands",ascending=False).head(10))
-        fig = px.bar(top_brands.sort_values("Luxury Brand Index"),
-            x="Brands",
+        top_brands = (df[["Brands","Luxury Tier"]].sort_values("Brands",ascending=False).head(10))
+        fig = px.bar(top_brands.sort_values("Brands"),
+            x="Luxury Tier",
             y="Brands",
             orientation="h",
             title="Top 10 Luxury Brands")
@@ -101,7 +103,7 @@ elif page == "🏆 Brand Ranking":
     st.subheader("Top Luxury Brands")
     top10 = ranking.head(10)
     fig = px.bar(top10.sort_values("Brands"),
-        x="Brands",
+        x="Global Reach Score",
         y="Brands",
         orientation="h",
         title="Top 10 Luxury Brands")
@@ -134,7 +136,7 @@ elif page == "⚖️ Brand Comparison":
             b1["Number of Stores"],
             b1["Products Offered"],
             b1["Countries Available"],
-            b1["Sustainability Score"],
+            b1["Sustainability Initiatives"],
             b1["Founded Age"]
         ],
         brand2: [
@@ -143,7 +145,7 @@ elif page == "⚖️ Brand Comparison":
             b2["Number of Stores"],
             b2["Products Offered"],
             b2["Countries Available"],
-            b2["Sustainability Score"],
+            b2["Sustainability Initiatives"],
             b2["Founded Age"]
         ]
     }
@@ -153,7 +155,7 @@ elif page == "⚖️ Brand Comparison":
 
     metrics = [
         "Global Reach Score",
-        "Sustainability Score",
+        "Sustainability Initiatives",
         "Number of Stores",
         "Products Offered",
         "Founded Age",
@@ -271,7 +273,7 @@ elif page == "🧠 Recommendation Engine":
             difference = abs(row["Average_Price"] - budget)
             budget_score = max(0,20 - (difference / budget * 20))
             score += budget_score
-        sustainability_score = min(row["Sustainability Score"] * 4,20)
+        sustainability_score = min(row["Sustainability Initiatives"] * 4,20)
         score += (sustainability_score *(sustainability / 5))
         score += (row["Global Reach Score"] / 100) * 20
         return min(score, 100)
@@ -286,7 +288,7 @@ elif page == "🧠 Recommendation Engine":
                     "Luxury Tier",
                     "Average_Price",
                     "Global Reach Score",
-                    "Sustainability Score",
+                    "Sustainability Initiatives",
                     "Compatibility Score"
                     ]].sort_values("Compatibility Score",ascending=False).head(10))
         st.success(
