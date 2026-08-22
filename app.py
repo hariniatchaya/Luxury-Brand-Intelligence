@@ -11,7 +11,7 @@ st.set_page_config(
 
 @st.cache_data
 def load_data():
-    df = pd.read_excel("data/Luxury_Brand_Analysis.xlsx")
+    df = pd.read_excel("Data/Luxury_Brand_Analysis.xlsx")
     return df
 df = load_data()
 
