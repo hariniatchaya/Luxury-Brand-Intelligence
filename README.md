@@ -4,7 +4,7 @@ An interactive **Luxury Brand Analytics Dashboard** built using Python, Pandas, 
 This project analyzes luxury brands from multiple business perspectives including **brand positioning, pricing, sustainability, heritage, customer targeting, clustering, and personalized brand recommendations**.
 
 ## 🚀 Live Demo
-🔗 **Streamlit App:** [Add your deployed Streamlit URL here]
+🔗 **Streamlit App:** URL
 
 ## 📌 Project Overview
 
