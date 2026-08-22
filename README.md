@@ -34,3 +34,6 @@ The major objectives of this project are:
 6. Build a compatibility-based recommendation system.
 7. Create an interactive business intelligence dashboard.
 8. Deploy the application to the cloud using Streamlit.
+
+# Author
+Harini Atchaya| Aspiring Data Analyst
