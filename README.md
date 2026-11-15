@@ -3,26 +3,23 @@
 An interactive **Luxury Brand Analytics Dashboard** built using Python, Pandas, Plotly, Machine Learning, and Streamlit.
 This project analyzes luxury brands from multiple business perspectives including **brand positioning, pricing, sustainability, heritage, customer targeting, clustering, and personalized brand recommendations**.
 
-## 🚀 Live Demo
-🔗 **Streamlit App:** URL
-
 ## 📌 Project Overview
 
 The luxury fashion industry contains brands with very different strategies in terms of pricing, heritage, global presence, product portfolio, sustainability, and market positioning.
 The objective of this project is to transform luxury brand data into meaningful **business insights and intelligent recommendations**.
 The project combines:
-- 📊 Exploratory Data Analysis (EDA)
-- 🧹 Data Cleaning & Preprocessing
-- ⚙️ Feature Engineering
-- 📈 Business Analytics
-- 🤖 Machine Learning
-- 💎 Luxury Brand Scoring
-- 🌍 Global Market Analysis
-- 🌱 Sustainability Analysis
-- 🧩 Brand Clustering
-- ⚖️ Brand Comparison
-- 🧠 Recommendation Engine
-- 🌐 Interactive Streamlit Dashboard
+-  Exploratory Data Analysis (EDA)
+-  Data Cleaning & Preprocessing
+-  Feature Engineering
+-  Business Analytics
+-  Machine Learning
+-  Luxury Brand Scoring
+-  Global Market Analysis
+-  Sustainability Analysis
+-  Brand Clustering
+-  Brand Comparison
+-  Recommendation Engine
+-  Interactive Streamlit Dashboard
 
 # 🎯 Objectives
 The major objectives of this project are:

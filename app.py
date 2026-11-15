@@ -264,19 +264,33 @@ elif page == "🧠 Recommendation Engine":
             value=3)
         
     def calculate_score(row):
-        score = 0
-        if (row["Target Gender"] == gender or row["Target Gender"] == "Male & Female"):
-            score += 20
-        if row["Luxury Tier"] == tier:
-            score += 20
-        if not pd.isna(row["Average_Price"]):
-            difference = abs(row["Average_Price"] - budget)
-            budget_score = max(0,20 - (difference / budget * 20))
-            score += budget_score
-        sustainability_score = min(row["Sustainability Initiatives"] * 4,20)
-        score += (sustainability_score *(sustainability / 5))
-        score += (row["Global Reach Score"] / 100) * 20
-        return min(score, 100)
+    score = 0
+    if (row["Target Gender"] == gender or row["Target Gender"] == "Male & Female"):
+        score += 20
+    if row["Luxury Tier"] == tier:
+        score += 20
+    average_price = pd.to_numeric(row["Average_Price"],
+        errors="coerce"
+    )
+    if pd.notna(average_price) and budget > 0:
+        difference = abs(average_price - budget)
+        budget_score = max(0,20 - (difference / budget * 20))
+        score += budget_score
+    sustainability_value = pd.to_numeric(row["Sustainability Initiatives"],
+        errors="coerce"
+    )
+    if pd.isna(sustainability_value):
+        sustainability_value = 0
+    sustainability_score = min(sustainability_value * 4,  20
+    )
+    score += (sustainability_score * (sustainability / 5))
+    global_reach = pd.to_numeric(row["Global Reach Score"],
+        errors="coerce"
+    )
+    if pd.isna(global_reach):
+        global_reach = 0
+    score += (global_reach / 100) * 20
+    return min(score, 100)
     
     if st.button("🔍 Find Best Brands",use_container_width=True):
         recommendations = df.copy()
